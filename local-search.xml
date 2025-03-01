@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>网站部署教程</title>
+    <link href="/2025/02/10/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"/>
+    <url>/2025/02/10/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<p>#网站部署教程<br>##1.工具安装：nodejs git<br>###安装node.js长期版，自动配置环境变量<br>###安装git<br><a href="https://link.zhihu.com/?target=https://nodejs.org/zh-cn">node.js链接</a>   <a href="https://git-scm.com/downloads">git链接</a></p><p>nodejs链接 <a href="https://link.zhihu.com/?target=https://nodejs.org/zh-cn">https://link.zhihu.com/?target=https%3A//nodejs.org/zh-cn</a><br>git链接 <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p><p>验证安装</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmd">git --version<br>node -v<br>npm -v<br></code></pre></td></tr></table></figure><p>git镜像设置</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">npm config <span class="hljs-built_in">set</span>  registry https://registry.npmmirror.com<br></code></pre></td></tr></table></figure><p>git设置用户名，邮箱（github的用户名及邮箱）</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">git config --global user.name &quot;自己的GitHub用户名&quot;<br>git config --global user.email &quot;自己的GitHub邮箱&quot;<br></code></pre></td></tr></table></figure><p>验证用户名邮箱</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">git config --global -l<br></code></pre></td></tr></table></figure><p>##2.连接github<br>创建ssh密钥</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ssh-keygen -t rsa -C &quot;自己的GitHub邮箱&quot;<br></code></pre></td></tr></table></figure><p>进入C:\Users\MIR.ssh复制id_rsa.pub内容<br>github中个人setting-SSH and GPG keys点击New SSH key，粘贴到key中，title随便设置，add ssh key<br>验证连接</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">ssh -T git@ssh.github.com //输入yes,显示“Hi xxx! You&#x27;ve successfully……” 即连接成功<br></code></pre></td></tr></table></figure><p>##3.创建github创建仓库<br>仓库名：用户名.github.io,   勾选readme<br>##4.下载hexo并本地部署<br>新建文件夹Hexo-Blog 右键git bash here<br>安装hexo</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install -g hexo-cli<br></code></pre></td></tr></table></figure><p>创建博客文件并初始化</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo init<br>npm install<br></code></pre></td></tr></table></figure><p>本地启动预览</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo g<br>hexo s<br></code></pre></td></tr></table></figure><p>##5.部署 Hexo 到 GitHub Pages<br>安装 hexo-deployer-git</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure><p>修改 _config.yml 文件末尾的 Deployment</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs config.yml">deploy:<br>    type: git<br>    repository: git@ssh.github.com:用户名/用户名.github.io.git<br>    branch: main<br></code></pre></td></tr></table></figure><p> 生成本地页面</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo d<br></code></pre></td></tr></table></figure><p>（完成）</p><p>##6.更改主题（可选）<br>下载主题(以next主题为例)<a href="https://github.com/iissnan/hexo-theme-next/releases">next主题</a><br>下载并解压到theme文件夹下，并将hexo-theme-next更名为next<br>修改 _config.yml 文件的theme: next</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs _config.yml">theme: next<br></code></pre></td></tr></table></figure><p>git bash here中安装hexo-renderer-swig插件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install hexo-renderer-swig --save<br></code></pre></td></tr></table></figure><p>清除缓存并重新生成</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo clean<br>hexo generate<br>hexo s --debug<br><br>或者 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 一步完成<br></code></pre></td></tr></table></figure><p>##7.修改全局配置文件*config.yml(可选)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs *config.yml">titile: 博客名<br>subtitle: &quot;副标题&quot;<br>description: &quot;描述&quot;<br>author: 作者<br>language: zh-CN<br>timezone: Asia/Shanghai<br></code></pre></td></tr></table></figure><p>#注意事项<br>####1.github仓库名必须与用户名相同<br>####2.*config.yml文件修改时的“:”后需加空格<br>####3.主题推荐：<br>1.<a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>        2.<a href="https://github.com/blinkfox/hexo-theme-matery">Matery</a> 3.<a href="https://github.com/litten/hexo-theme-yilia">Yilia</a> 4.<a href="https://github.com/ppoffice/hexo-theme-icarus">Icarus</a> 5.<a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> 6.<a href="https://github.com/Molunerfinn/hexo-theme-melody">Melody</a><br>7.<a href="https://github.com/theme-next/hexo-theme-next">NexT (Rebirth)</a> 8.<a href="https://github.com/probberechts/hexo-theme-cactus">Cactus</a> 9.<a href="https://github.com/iTimeTraveler/hexo-theme-hiero">Hiero</a> 10.<a href="https://github.com/pinggod/hexo-theme-apollo">Apollo</a> </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>科技 生活</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MIR的个人博客</title>
+    <link href="/2025/02/06/MIR%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2025/02/06/MIR%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<p>1.这是一个通过hexo连接github，再通过vercel部署的个人网站<br>2.此后本人也会在该站分享学习路程</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>科技 生活</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2025/02/06/hello-world/"/>
+    <url>/2025/02/06/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
