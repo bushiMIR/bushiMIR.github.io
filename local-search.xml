@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>如何改为Netlify部署</title>
+    <link href="/2025/04/01/%E5%A6%82%E4%BD%95%E6%94%B9%E4%B8%BANetlify%E9%83%A8%E7%BD%B2/"/>
+    <url>/2025/04/01/%E5%A6%82%E4%BD%95%E6%94%B9%E4%B8%BANetlify%E9%83%A8%E7%BD%B2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="如何改为Netlify部署"><a href="#如何改为Netlify部署" class="headerlink" title="如何改为Netlify部署"></a>如何改为Netlify部署</h1><h2 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h2><p><a href="https://app.netlify.com/">Netlify链接</a><br><a href="https://www.dnspod.cn/Products/dns">DNSpod链接</a><br><a href="https://yundunnext.console.aliyun.com/">阿里证书申请链接</a></p><h2 id="2-netlify设置"><a href="#2-netlify设置" class="headerlink" title="2.netlify设置"></a>2.netlify设置</h2><p>使用你的 GitHub 账号登陆 Netlify 并链接 GitHub 仓库<br>尝试点击二级域名，看是否能正常登录<br>添加自定义域名<br>在DNSpod里添加记录（此处提示与vercel有冲突，把vercel记录暂停）<br>Netlify内容更新后申请证书，（阿里云一次免费三个月，一年可申请20次）<br>申请阿里的证书需要在DNSpod再添加一条记录<br>记录通过验证,获取证书后，下载apache，在Netlify从上至下分别填入 public.crt，key ，chain</p><p>#总结<br>解决了vercel在国内不开梯子时总是登陆不上的问题</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>科技 生活</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MD文件上传简化</title>
     <link href="/2025/04/01/MD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%AE%80%E5%8C%96/"/>
     <url>/2025/04/01/MD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%AE%80%E5%8C%96/</url>
